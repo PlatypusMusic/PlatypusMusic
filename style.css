@@ -1,0 +1,76 @@
+body{
+    
+    margin: 0px;
+    padding: 0px;
+    background-color: #4e535b;
+    
+}
+
+.pHeading{
+    
+    background-color: black;
+    border-bottom: 2px solid #c41c09;
+    padding:35px;
+    margin-top: -20px;
+    
+}
+
+.Logo{
+    
+   background-color: white;
+   border: 2px solid #c41c09;
+   padding: 5px;
+   font-family: sans-serif, sans, monospace;
+   color: black;
+   font-size: 30px;
+   text-align: center;
+   width: 20%;
+    
+}
+
+
+.navButton{
+    
+    border-radius: 25%;
+    background-color: orangered;
+    border: 2px solid black;
+    color: white;
+    width: 15%;
+    height: 75px;
+    margin-left: 35px;
+    
+}
+
+#artist-form{
+    
+    margin-left: 75.5%;
+    margin-top: -65px;
+    
+}
+
+#similarArtist-div{
+    
+    margin-left:75%;
+    
+    
+}
+
+input[type=text]{
+    
+  border: 2px inset black;
+  border-radius: 20%;
+
+    
+}
+
+.fFooter{
+    
+    background-color: black;
+    padding: 75px;
+    border-top: 2px solid #c41c09;
+    border-bottom: 4px solid black;
+    margin-top: 570px;
+    margin-bottom: -40px;
+    
+    
+}
