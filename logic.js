@@ -62,6 +62,37 @@
     });
   }
 
+
+   function searchAlbums(artist) {
+
+   
+    var queryURL = "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + artist + "&api_key=8ce559d2fd9f4e234a3ac172db2d0ef6&format=json";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) {
+
+      // Printing the entire object to console
+      console.log(response);
+      console.log(response.topalbums.album[0].name)
+      console.log(response.topalbums.album[0].image[1]["#text"])
+      
+
+      //needs to loop thru array to get 3 albums
+      var artistAlbum = $("<h3>").text(response.topalbums.album[0].name);
+
+      
+      var albumImage = $("<img>").attr("src", response.topalbums.album[0].image[3]["#text"]);
+        
+        $("#albumDiv").empty();
+        $("#albumDiv").append(artistAlbum, albumImage);
+
+    
+      
+      
+    });
+  }
+
   // Event handler for user clicking the select-artist button
   $("#select-artist").on("click", function(event) {
     // Preventing the button from trying to submit the form
@@ -69,7 +100,8 @@
     // Storing the artist name
     var artist = $("#artist-input").val().trim();
 
-    // Running the searchBandsInTown function (passing in the artist as an argument)
+    // Running the searchArtists function (passing in the artist as an argument)
     searchArtists(artist);
-    searchUpcomingEvents(artist)
+    searchUpcomingEvents(artist);
+    searchAlbums(artist);
   });
