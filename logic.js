@@ -62,6 +62,29 @@
     });
   }
 
+  function streamingAccounts(artist) {
+
+    //Querying the MusicGraph api for the selected artist
+    var queryURL = "http://api.musicgraph.com/api/v2/artist/search?api_key=f195226f9a12a0b87eb1809dfa181da1&name=" + artist;
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) {
+
+      // Receiving the spotify id
+      var spotifyID = (response.data[0].spotify_id);
+
+      // Make Spotify URL a variabel to plugin
+      var spotifyPage = ("open.spotify.com/artist/"+ spotifyID);
+      
+      // Receiving the youtube id
+      var youtubeID = (response.data[0].youtube_id);
+
+      // Make Youtube Url a variable to plugin
+      var youtubePage = ("youtube.com/channel/" + youtubeID);
+    });
+  }
+
   // Event handler for user clicking the select-artist button
   $("#select-artist").on("click", function(event) {
     // Preventing the button from trying to submit the form
@@ -71,5 +94,6 @@
 
     // Running the searchBandsInTown function (passing in the artist as an argument)
     searchArtists(artist);
-    searchUpcomingEvents(artist)
+    searchUpcomingEvents(artist);
+    streamingAccounts(artist);
   });
