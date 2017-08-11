@@ -55,6 +55,11 @@ body{
     
 }
 
+#upcomingEventsDiv {
+  font-family: sans-serif, sans, monospace;
+   color: white;
+}
+
 input[type=text]{
     
   border: 2px inset black;
