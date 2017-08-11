@@ -19,7 +19,7 @@
       var artistName = $("<h1>").text(response.artist.name);
       var artistURL = $("<a>").attr("href", response.artist.url).append(artistName);
       var artistImage = $("<img>").attr("src", response.artist.image[3]["#text"]);
-      var Bio = $("<h2>").text("Bio: " + response.artist.bio.summary);
+      var Bio = $("<h2>").text("Bio: " + response.artist.bio.summary.substring(response.artist.bio.summary[0],response.artist.bio.summary.indexOf("<a")));
         
         $("#artist-div").empty();
         $("#similarArtist-div").empty();
