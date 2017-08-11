@@ -63,11 +63,13 @@
   }
 
 
-   function searchAlbums(artist) {
+  function searchAlbums(artist) {
 
    
     var queryURL = "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + artist + "&api_key=8ce559d2fd9f4e234a3ac172db2d0ef6&format=json";
-    $.ajax({
+
+
+     $.ajax({
       url: queryURL,
       method: "GET"
     }).done(function(response) {
@@ -87,9 +89,34 @@
         $("#albumDiv").empty();
         $("#albumDiv").append(artistAlbum, albumImage);
 
-    
+      });
+  }
+
+
+
+
+  function streamingAccounts(artist) {
+
+    //Querying the MusicGraph api for the selected artist
+    var queryURL = "http://api.musicgraph.com/api/v2/artist/search?api_key=f195226f9a12a0b87eb1809dfa181da1&name=" + artist;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) {
+
+
+      // Receiving the spotify id
+      var spotifyID = (response.data[0].spotify_id);
+
+      // Make Spotify URL a variabel to plugin
+      var spotifyPage = ("open.spotify.com/artist/"+ spotifyID);
       
-      
+      // Receiving the youtube id
+      var youtubeID = (response.data[0].youtube_id);
+
+      // Make Youtube Url a variable to plugin
+      var youtubePage = ("youtube.com/channel/" + youtubeID);
     });
   }
 
@@ -103,5 +130,8 @@
     // Running the searchArtists function (passing in the artist as an argument)
     searchArtists(artist);
     searchUpcomingEvents(artist);
+
     searchAlbums(artist);
+
+    streamingAccounts(artist);
   });
