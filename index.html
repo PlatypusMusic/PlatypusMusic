@@ -7,7 +7,6 @@
   <title>Platypus Music</title>
     
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -18,48 +17,125 @@
 
 <body>
     
-<div class="page-header pHeading">
-  <h1 class="Logo">Platypus Music</h1>
-</div>
+<div class="container.fluid">
+    <div class="row">
+        
+     <!--Navbar Buttons-->
+     <div class="row">
+         
+        <nav class="nNavbar navbar navbar-default navbar-fixed-top">
+         
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-21">
+                <a class="navbar-brand" href="#">Platypus Music</a>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> <!--Bootstrap 4 changes col-sm is equal width amongest all col-sm, and col-2 would be col-xs equilvalent-->
+                <a class="navbar-text" href="#bioDiv">Bio</a>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                <a class="navbar-text" href="#eventsDiv">Tour</a>
+            </div>
+            <div class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
+                <a class="navbar-text" href="#albums">Music</a>
+            </div>
+            <div class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
+                <a class="navbar-text" href="#">More</a>
+            </div>
+            
+            <form class="col-xs-4 navbar-form navbar-left">
+                
+                  <div class="input-group">
+                      
+                      <input type="text" class="artist-input form-control" placeholder="Search for Artist">
+                      
+                      <span class="input-group-btn">
+                        <button class="select-artist btn btn-default" type="button"><span class="glyphicon glyphicon-search
+                       " aria hidden="true"></span></button>
+                      </span>
+                      
+                    </div>
+                
+            </form>
+            
+        </nav>
+         
+     </div>
     
-<button class="navButton Bio">Bio</button>
-    
-<button class="navButton Tour">Example</button>
-    
-<button class="navButton Tab">Example</button>
-    
-<button class="navButton Social">Social</button>  <!--Examples of buttons-->
-    
- 
-<form id="artist-form">
+</div>  
+        
 
-    <label for="artist-input">Search Artist</label>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
 
-   
-    <input type="text" id="artist-input"><br>
+          <div class="panel panel-danger" id = "bioDiv">
+            <div class="panel-heading">Bio: </div>
+            <div class="panel-body" id ="artist-div"></div>
+          </div>
+            <!-- <div id="artist-div"></div> -->
+        </div>
+    </div>
+</div> 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          
+          <div class="panel panel-danger" id = "albums">
+            <div class="panel-heading">Albums: </div>
+              <div class="panel-body">
+
+                <div class ="row">
+
+                  <div class="col-md-4 text-center" id = "albumDiv1"></div>
+                  <div class="col-md-4 text-center" id = "albumDiv2"></div>
+                  <div class="col-md-4 text-center" id = "albumDiv3"></div>
+
+                </div>
+
+          </div>
+         
+        </div>
+    </div>
+  </div>
+</div>  
+
+
+<div class="container">
+    <div class="row">
+        
+      <div class="col-md-4">
+          
+          <div class="panel panel-danger" id = "similarDiv">
+              <div class="panel-heading">Similar Artists: </div>
+              <div class="panel-body" id = "similarArtist-div"></div>
+          </div>
+         
+      </div>
+
+      <div class="col-md-4">
+
+          <div class="panel panel-danger" id = "eventsDiv">
+              <div class="panel-heading">Upcoming Events: </div>
+              <div class="panel-body" id = "upcomingEventsDiv"></div>
+          </div>
+
+      </div>
+
+    </div>
+</div> 
+
 
     
-    <input id="select-artist" type="submit" value="GO!">
-    
-</form>
-    
-
-<div id="artist-div"></div>
-    
-<div id="similarArtist-div"></div>
-
-<div id = "upcomingEventsDiv"></div>
-
-<div id = "albumDiv"></div>
-    
-
-<div class="page-header fFooter">
+<footer class = "fFooter footer">
   
-</div>
+</footer>
+  
     
 
 <script src="logic.js" type="text/javascript"></script>
     
 </body>
+
+
 
 </html>

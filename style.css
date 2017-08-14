@@ -1,9 +1,20 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body{
     
-    margin: 0px;
+    margin-top: 50px;
+    margin-bottom: 200px;
     padding: 0px;
     background-color: #4e535b;
     
+}
+
+p {
+  font-size: 20px;
+
 }
 
 .pHeading{
@@ -14,6 +25,7 @@ body{
     margin-top: -20px;
     
 }
+    
 
 .Logo{
     
@@ -24,58 +36,72 @@ body{
    color: black;
    font-size: 30px;
    text-align: center;
-   width: 20%;
-    
+
 }
 
-
-.navButton{
+.nNavbar{
     
-    border-radius: 25%;
-    background-color: orangered;
-    border: 2px solid black;
-    color: white;
-    width: 15%;
-    height: 75px;
-    margin-left: 35px;
-    
+    margin-top: -5px;
+    border-bottom: 1.5px soild #c41c09;
+   
 }
 
-#artist-form{
-    
-    margin-left: 75.5%;
-    margin-top: -65px;
-    
+#bioDiv {
+  display: none;
 }
 
-#similarArtist-div{
-    
-    margin-left:75%;
-    
-    
+#similarDiv {
+  display: none;
 }
 
-#upcomingEventsDiv {
-  font-family: sans-serif, sans, monospace;
-   color: white;
+#albums {
+  display: none;
 }
 
-input[type=text]{
-    
-  border: 2px inset black;
-  border-radius: 20%;
+#eventsDiv {
+  display: none;
+}
 
-    
+@media only screen and (max-width : 768px) {
+
+  .navbar-form {
+    border: none;
+    box-shadow: none;
+    }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 101%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
 }
 
 .fFooter{
     
     background-color: black;
-    padding: 75px;
+    padding: 55px;
     border-top: 2px solid #c41c09;
-    border-bottom: 4px solid black;
-    margin-top: 570px;
-    margin-bottom: -40px;
-    
-    
+       
 }
+
+/*Custom Css For Bootstrap*/
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+/*Custom Css For Bootstrap End*/

@@ -18,21 +18,22 @@
       // Constructing HTML containing the artist information
       var artistName = $("<h1>").text(response.artist.name);
       var artistURL = $("<a>").attr("href", response.artist.url).append(artistName);
-      var artistImage = $("<img>").attr("src", response.artist.image[3]["#text"]);
-      var Bio = $("<h2>").text("Bio: " + response.artist.bio.summary.substring(response.artist.bio.summary[0],response.artist.bio.summary.indexOf("<a")));
+      var artistImage = $("<img>").attr("src", response.artist.image[2]["#text"], "align", "right");
+      var Bio = $("<p>").text(response.artist.bio.summary.substring(response.artist.bio.summary[0],response.artist.bio.summary.indexOf("<a")));
         
         $("#artist-div").empty();
         $("#similarArtist-div").empty();
 
        for ( var i = 0; i < 4; i++) {
-        var similarArtists = $("<h2>").text(response.artist.similar.artist[i].name);
-        similarArtists.css("color", "white");
+        var similarArtists = $("<h3>").text(response.artist.similar.artist[i].name);
+        var similarArtistsURL = $("<a>").attr("href", response.artist.similar.artist[i].url).append(similarArtists);
+
+        console.log("similar artist link: " + response.artist.similar.artist[i].url);
 
 
       
       $("#artist-div").append(artistURL, artistImage, Bio);
       $("#similarArtist-div").append(similarArtists);
-      Bio.css("color", "white");
       }
       
       
@@ -76,18 +77,31 @@
 
       // Printing the entire object to console
       console.log(response);
-      console.log(response.topalbums.album[0].name)
-      console.log(response.topalbums.album[0].image[1]["#text"])
+      console.log(response.topalbums.album[0].name);
+      console.log(response.topalbums.album[0].image[1]["#text"]);
       
 
-      //needs to loop thru array to get 3 albums
-      var artistAlbum = $("<h3>").text(response.topalbums.album[0].name);
+         $("#albumDiv1").empty();
+         $("#albumDiv2").empty();
+         $("#albumDiv3").empty();
 
-      
-      var albumImage = $("<img>").attr("src", response.topalbums.album[0].image[3]["#text"]);
+
+        var artistAlbum1 = $("<h4>").text(response.topalbums.album[0].name);
+        var albumImage1 = $("<img>").attr("src", response.topalbums.album[0].image[2]["#text"]);
+
+        var artistAlbum2 = $("<h4>").text(response.topalbums.album[1].name);
+        var albumImage2 = $("<img>").attr("src", response.topalbums.album[1].image[2]["#text"]);
+
+        var artistAlbum3 = $("<h4>").text(response.topalbums.album[2].name);
+        var albumImage3 = $("<img>").attr("src", response.topalbums.album[2].image[2]["#text"]);
+
         
-        $("#albumDiv").empty();
-        $("#albumDiv").append(artistAlbum, albumImage);
+
+
+      $("#albumDiv1").append(artistAlbum1, albumImage1);
+      $("#albumDiv2").append(artistAlbum2, albumImage2);
+      $("#albumDiv3").append(artistAlbum3, albumImage3);
+      
 
       });
   }
@@ -105,6 +119,8 @@
       method: "GET"
     }).done(function(response) {
 
+      console.log(response);
+
 
       // Receiving the spotify id
       var spotifyID = (response.data[0].spotify_id);
@@ -120,12 +136,18 @@
     });
   }
 
+
   // Event handler for user clicking the select-artist button
-  $("#select-artist").on("click", function(event) {
+  $(".select-artist").on("click", function(event) {
     // Preventing the button from trying to submit the form
     event.preventDefault();
+
+    $("#bioDiv").show();
+    $("#similarDiv").show();
+    $("#albums").show();
+    $("#eventsDiv").show();
     // Storing the artist name
-    var artist = $("#artist-input").val().trim();
+    var artist = $(".artist-input").val().trim();
 
     // Running the searchArtists function (passing in the artist as an argument)
     searchArtists(artist);
