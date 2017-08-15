@@ -33,7 +33,9 @@
 
       
       $("#artist-div").append(artistURL, artistImage, Bio);
-      $("#similarArtist-div").append(similarArtists);
+      $("#similarArtist-div").append(similarArtistsURL);
+      artistImage.css("float", "left");
+      artistImage.css("margin-right", "10px");
       }
       
       
@@ -142,6 +144,7 @@
     // Preventing the button from trying to submit the form
     event.preventDefault();
 
+    $("#artistCarousel").hide();
     $("#bioDiv").show();
     $("#similarDiv").show();
     $("#albums").show();
