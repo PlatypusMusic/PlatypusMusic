@@ -5,8 +5,8 @@ html {
 
 body{
     
-    margin-top: 50px;
-    margin-bottom: 200px;
+    margin-top: 60px;
+    margin-bottom: 100px;
     padding: 0px;
     background-color: #4e535b;
     
@@ -16,16 +16,7 @@ p {
   font-size: 20px;
 
 }
-
-.pHeading{
-    
-    background-color: black;
-    border-bottom: 2px solid #c41c09;
-    padding:35px;
-    margin-top: -20px;
-    
-}
-    
+   
 
 .Logo{
     
@@ -42,8 +33,15 @@ p {
 .nNavbar{
     
     margin-top: -5px;
-    border-bottom: 1.5px soild #c41c09;
+    border-bottom: 2px solid #c41c09;
    
+}
+
+.playtpusLogo {
+    
+    padding:0px;
+    margin-top: 2px;
+    
 }
 
 #bioDiv {
@@ -62,12 +60,22 @@ p {
   display: none;
 }
 
+#socialDiv {
+  display: none;
+}
+
 @media only screen and (max-width : 768px) {
 
+body {
+  margin-top: 120px;
+}
   .navbar-form {
     border: none;
     box-shadow: none;
     }
+  #artistCarousel {
+    align-content: center;
+  }
 }
 
 .footer {
@@ -89,7 +97,7 @@ p {
 
 /*Custom Css For Bootstrap*/
 body > .container {
-  padding: 60px 15px 0;
+  padding: 10px 15px 0;
 }
 .container .text-muted {
   margin: 20px 0;
@@ -105,3 +113,5 @@ code {
 }
 
 /*Custom Css For Bootstrap End*/
+
+

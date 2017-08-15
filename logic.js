@@ -11,9 +11,9 @@
 
       // Printing the entire object to console
       console.log(response);
-      console.log(response.artist.name);
-      console.log(response.artist.bio);
-      console.log(response.artist.image[0]);
+      console.log("Artist name: " + response.artist.name);
+      console.log("Bio: " + response.artist.bio);
+      console.log("Artist Image: " + response.artist.image[0]);
 
       // Constructing HTML containing the artist information
       var artistName = $("<h1>").text(response.artist.name);
@@ -24,7 +24,7 @@
         $("#artist-div").empty();
         $("#similarArtist-div").empty();
 
-       for ( var i = 0; i < 4; i++) {
+       for ( var i = 0; i < 3; i++) {
         var similarArtists = $("<h3>").text(response.artist.similar.artist[i].name);
         var similarArtistsURL = $("<a>").attr("href", response.artist.similar.artist[i].url).append(similarArtists);
 
@@ -42,6 +42,8 @@
     });
   }
 
+  // "https://rest.bandsintown.com/artists/" + artist + "?app_id=playtapus";
+
   function searchUpcomingEvents(artist) {
 
     // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
@@ -56,13 +58,40 @@
 
       // Constructing HTML containing the artist information
       
-      var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
+      var upcomingEvents = $("<p>").text(response.upcoming_event_count + " upcoming events");
       var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
 
       // Empty the contents of the artist-div, append the new artist content
       $("#upcomingEventsDiv").empty();
       $("#upcomingEventsDiv").append(upcomingEvents, goToArtist);
     });
+
+    // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
+    // var eventsURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=playtapus";
+    // $.ajax({
+    //   url: eventsURL,
+    //   method: "GET"
+    // }).done(function(response) {
+
+    //   // Printing the entire object to console
+    //   console.log(response);
+    //   console.log(response[0].venue.name);
+    //   console.log(response[0].venue.city);
+
+    //   // Constructing HTML containing the artist information
+    //   var venueName = $("<p>").text(response[0].venue.name);
+    //   var cityName = $("<p>").text(response[0].venue.city);
+      
+
+    //   // Empty the contents of the artist-div, append the new artist content
+    //   $("#venue").empty();
+    //   $("#location").empty();
+    //   $("#venue").append(venueName);
+    //   $("#location").append(cityName);
+
+
+    // });
+
   }
 
 
@@ -79,8 +108,8 @@
 
       // Printing the entire object to console
       console.log(response);
-      console.log(response.topalbums.album[0].name);
-      console.log(response.topalbums.album[0].image[1]["#text"]);
+      console.log("Album name: " + response.topalbums.album[0].name);
+      console.log("Album image: " + response.topalbums.album[0].image[1]["#text"]);
       
 
          $("#albumDiv1").empty();
@@ -90,20 +119,81 @@
 
         var artistAlbum1 = $("<h4>").text(response.topalbums.album[0].name);
         var albumImage1 = $("<img>").attr("src", response.topalbums.album[0].image[2]["#text"]);
+        var albumURL1 = $("<a>").attr("href", response.topalbums.album[0].url).append(albumImage1);
 
         var artistAlbum2 = $("<h4>").text(response.topalbums.album[1].name);
         var albumImage2 = $("<img>").attr("src", response.topalbums.album[1].image[2]["#text"]);
+        var albumURL2 = $("<a>").attr("href", response.topalbums.album[1].url).append(albumImage2);
 
         var artistAlbum3 = $("<h4>").text(response.topalbums.album[2].name);
         var albumImage3 = $("<img>").attr("src", response.topalbums.album[2].image[2]["#text"]);
+        var albumURL3 = $("<a>").attr("href", response.topalbums.album[2].url).append(albumImage3);
 
         
 
 
-      $("#albumDiv1").append(artistAlbum1, albumImage1);
-      $("#albumDiv2").append(artistAlbum2, albumImage2);
-      $("#albumDiv3").append(artistAlbum3, albumImage3);
+      $("#albumDiv1").append(artistAlbum1, albumURL1);
+      $("#albumDiv2").append(artistAlbum2, albumURL2);
+      $("#albumDiv3").append(artistAlbum3, albumURL3);
       
+
+      });
+  }
+
+
+function streamingAccounts(artist) {
+
+    //Querying the MusicGraph api for the selected artist
+    var queryURL = "http://api.musicgraph.com/api/v2/artist/suggest?api_key=f195226f9a12a0b87eb1809dfa181da1&prefix=" + artist;
+
+    return $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).done(function(artist) {
+
+        console.log(artist);
+
+        // Receiving the musicgraph id
+          musicgraphID = (artist.data[0].id);
+          console.log(musicgraphID);
+          // make URL for recieving social_url's
+          //var socialURL ="http://api.musicgraph.com/api/v2/artist/"+musicgraphID+"/social-urls?api_key=f195226f9a12a0b87eb1809dfa181da1"
+          //console.log(socialURL);
+          //return(socialURL);
+          return(musicgraphID);
+        });
+  }
+
+
+function SocialAccounts(musicgraphID) {
+
+  // make URL for recieving social_url's
+        var social ="http://api.musicgraph.com/api/v2/artist/"+ musicgraphID +"/social-urls?api_key=f195226f9a12a0b87eb1809dfa181da1";
+        console.log(social);
+
+        $.ajax({
+          url: social,
+          method: "GET"
+        }).done(function(musicgraphID) {
+
+          var twitter = musicgraphID.data.twitter_url[0];
+          var facebook = musicgraphID.data.facebook_url;
+          var instagram = musicgraphID.data.instagram_url[0];
+          var socials = [twitter,facebook,instagram];
+
+          $("#socialInfoDiv").empty();
+            // for ( var i = 0; i < socials.length; i++) {
+              var twitterLinks = $("<h3>").text("Twitter");
+              var facebookLinks = $("<h3>").text("Facebook");
+              var instagramLinks = $("<h3>").text("Instagram");
+              var socialsURL1 = $("<a>").attr("href", socials[0]).append(twitterLinks);
+              var socialsURL2 = $("<a>").attr("href", socials[1]).append(facebookLinks);
+              var socialsURL3 = $("<a>").attr("href", socials[2]).append(instagramLinks);
+
+
+              $("#socialInfoDiv").append(socialsURL1, socialsURL2, socialsURL3);
+
+          // }
 
       });
   }
@@ -111,32 +201,15 @@
 
 
 
-  function streamingAccounts(artist) {
+  $(".navbar-brand").on("click", function(event) {
+    $("#artistCarousel").show();
+    $("#bioDiv").hide();
+    $("#similarDiv").hide();
+    $("#albums").hide();
+    $("#eventsDiv").hide();
+    $("#socialDiv").hide();
+  })
 
-    //Querying the MusicGraph api for the selected artist
-    var queryURL = "http://api.musicgraph.com/api/v2/artist/search?api_key=f195226f9a12a0b87eb1809dfa181da1&name=" + artist;
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).done(function(response) {
-
-      console.log(response);
-
-
-      // Receiving the spotify id
-      var spotifyID = (response.data[0].spotify_id);
-
-      // Make Spotify URL a variabel to plugin
-      var spotifyPage = ("open.spotify.com/artist/"+ spotifyID);
-      
-      // Receiving the youtube id
-      var youtubeID = (response.data[0].youtube_id);
-
-      // Make Youtube Url a variable to plugin
-      var youtubePage = ("youtube.com/channel/" + youtubeID);
-    });
-  }
 
 
   // Event handler for user clicking the select-artist button
@@ -149,6 +222,7 @@
     $("#similarDiv").show();
     $("#albums").show();
     $("#eventsDiv").show();
+    $("#socialDiv").show();
     // Storing the artist name
     var artist = $(".artist-input").val().trim();
 
@@ -159,4 +233,8 @@
     searchAlbums(artist);
 
     streamingAccounts(artist);
+     streamingAccounts(artist).done(function(){
+        SocialAccounts(musicgraphID);
+      });
+
   });

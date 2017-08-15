@@ -19,36 +19,22 @@
 
 <body>
     
-<div class="container.fluid">
-    <div class="row">
-        
-     <!--Navbar Buttons-->
+<div class="container.fluid">    
+     
      <div class="row">
          
         <nav class="nNavbar navbar navbar-default navbar-fixed-top">
          
-            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-21">
-                <a class="navbar-brand" href="#">Platypus Music</a>
-            </div>
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> <!--Bootstrap 4 changes col-sm is equal width amongest all col-sm, and col-2 would be col-xs equilvalent-->
-                <a class="navbar-text" href="#bioDiv">Bio</a>
-            </div>
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                <a class="navbar-text" href="#eventsDiv">Tour</a>
-            </div>
-            <div class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
-                <a class="navbar-text" href="#albums">Music</a>
-            </div>
-            <div class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
-                <a class="navbar-text" href="#">More</a>
-            </div>
             
-            <form class="col-xs-4 navbar-form navbar-left">
+            <a class="navbar-brand" href="#">Platypus Music</a>
+            
+            <img class="playtpusLogo text-right navbar-brand" src="images/Platypus1.png">
+            
+            
+            <form class="col-sm-6 text-left navbar-form navbar-left pull-right">
                 
                   <div class="input-group">
 
-                  	<form>
-                      
                       <input type="text" class="artist-input form-control" placeholder="Search for Artist">
                       
                       <span class="input-group-btn">
@@ -56,8 +42,7 @@
                        " aria hidden="true"></span></button>
                       </span>
 
-                     </form>
-                      
+                     
                     </div>
                 
             </form>
@@ -65,7 +50,6 @@
         </nav>
          
      </div>
-    
 </div>
 
 <div class="container" id ="artistCarousel">
@@ -124,8 +108,10 @@
             <div class="panel-heading">Bio: </div>
             <div class="panel-body" id ="artist-div"></div>
           </div>
-            <!-- <div id="artist-div"></div> -->
+            
         </div>
+
+
     </div>
 </div> 
 
@@ -144,11 +130,10 @@
                   <div class="col-md-4 text-center" id = "albumDiv3"></div>
 
                 </div>
-
-          </div>
-         
+          </div> 
         </div>
     </div>
+
   </div>
 </div>  
 
@@ -174,13 +159,23 @@
 
       </div>
 
+      <div class="col-md-4">
+
+          <div class="panel panel-danger" id = "socialDiv">
+              <div class="panel-heading">Social: </div>
+              <div class="panel-body" id = "socialInfoDiv"></div>
+          </div>
+
+      </div>
+
+
+
     </div>
 </div> 
 
 
     
-<footer class = "fFooter footer">
-  
+<footer class = "fFooter footer text-center">
 </footer>
   
     
