@@ -66,32 +66,6 @@
       $("#upcomingEventsDiv").append(upcomingEvents, goToArtist);
     });
 
-    // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
-    // var eventsURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=playtapus";
-    // $.ajax({
-    //   url: eventsURL,
-    //   method: "GET"
-    // }).done(function(response) {
-
-    //   // Printing the entire object to console
-    //   console.log(response);
-    //   console.log(response[0].venue.name);
-    //   console.log(response[0].venue.city);
-
-    //   // Constructing HTML containing the artist information
-    //   var venueName = $("<p>").text(response[0].venue.name);
-    //   var cityName = $("<p>").text(response[0].venue.city);
-      
-
-    //   // Empty the contents of the artist-div, append the new artist content
-    //   $("#venue").empty();
-    //   $("#location").empty();
-    //   $("#venue").append(venueName);
-    //   $("#location").append(cityName);
-
-
-    // });
-
   }
 
 
@@ -156,10 +130,6 @@ function streamingAccounts(artist) {
         // Receiving the musicgraph id
           musicgraphID = (artist.data[0].id);
           console.log(musicgraphID);
-          // make URL for recieving social_url's
-          //var socialURL ="http://api.musicgraph.com/api/v2/artist/"+musicgraphID+"/social-urls?api_key=f195226f9a12a0b87eb1809dfa181da1"
-          //console.log(socialURL);
-          //return(socialURL);
           return(musicgraphID);
         });
   }
@@ -182,7 +152,6 @@ function SocialAccounts(musicgraphID) {
           var socials = [twitter,facebook,instagram];
 
           $("#socialInfoDiv").empty();
-            // for ( var i = 0; i < socials.length; i++) {
               var twitterLinks = $("<h3>").text("Twitter");
               var facebookLinks = $("<h3>").text("Facebook");
               var instagramLinks = $("<h3>").text("Instagram");
@@ -193,11 +162,9 @@ function SocialAccounts(musicgraphID) {
 
               $("#socialInfoDiv").append(socialsURL1, socialsURL2, socialsURL3);
 
-          // }
 
       });
   }
-
 
 
 
