@@ -14,4 +14,4 @@ Technologies Utilized consisted of
 
 ---
 
-![Platypus Background Picture](Platypus_Background.png)
+![Platypus Background Picture](images/Platypus_Background.png)
